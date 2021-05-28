@@ -46,7 +46,7 @@ class YoutubeService:
                 response = request.execute()
 
                 logging.info(f"{self.__class__.__name__}    : Pushing response into task queue.")
-                celery.current_app.send_task('video.tasks.store_youtube_videos', (response.get('items'),))
+                celery.current_app.send_task('tasks.store_youtube_videos', (response.get('items'),))
 
                 next_page_token = response.get('nextPageToken')
                 if not next_page_token:
