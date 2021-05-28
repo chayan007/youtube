@@ -80,6 +80,10 @@ class VideoIngestor:
             The list of video.
         :return: NoneType
         """
+        if not items:
+            logging.info(f"{self.__class__.__name__}    : no `items` to store into database.")
+            return
+
         threads = list()
 
         for index, item in enumerate(items):
