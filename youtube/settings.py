@@ -149,5 +149,6 @@ CELERY_BEAT_SCHEDULE = {
 YOUTUBE_API_KEYS = [
     'AIzaSyAxVcewL4lyPVdtStLK0uWOwJY9sA-dO5c',
     'AIzaSyD5O-khltsQiCsEfuABj9MwAC0iG0W4_-g',
-    'AIzaSyCuOy5LtKgL1LwNo-0urGnKtbeVB1eBD0U'
+    'AIzaSyCuOy5LtKgL1LwNo-0urGnKtbeVB1eBD0U',
+    'AIzaSyAqiIACPU_-rIqKSyHmyF7ZTN4C22UG3qg'
 ]
