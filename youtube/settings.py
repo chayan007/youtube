@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-y^n)9#0xe#w#r#gmnnbfww&k1w68kb%vgn*=95)3!1f7&p28z@
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -136,9 +136,9 @@ TASK_FREQUENCY = 1
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-BROKER_URL = 'redis://localhost:6379'
+BROKER_URL = 'redis://redis:6379'
 
-CELERY_RESULT_BACKEND = 'redis://localhost:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
