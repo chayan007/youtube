@@ -2,7 +2,7 @@
 
 ### Youtube Search API
 
-Allows users to search API from youtube directly.
+Allows users to search API youtube data directly that is being ingested into the system.
 
 ### Stack used:
 
@@ -27,8 +27,8 @@ Allows users to search API from youtube directly.
 
 #### Use:
 
-- Get all videos: `<BASE_UR>L/videos/v1` (no authorization)
-- Search videos: `<BASE_UR>L/videos/v1?search=<your search string>` (no authorization)
+- Get all videos: `<BASE_URL>/videos/v1` (no authorization)
+- Search videos: `<BASE_URL>/videos/v1?search=<your search string>` (no authorization)
 
 ### PS:
 
