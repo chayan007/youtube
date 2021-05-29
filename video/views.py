@@ -14,13 +14,13 @@ class VideoSearchView(GenericAPIView):
     def get(self, request, *args, **kwargs):
         """Get all the matching video records."""
         search_string = request.query_params.get('search')
-        if not search_string:
-            return Response(
-                data={'error': 'Missing query parameter `search`.'},
-                status=status.HTTP_400_BAD_REQUEST
-            )
+        video_ops = VideoModelOps()
 
-        self.queryset = VideoModelOps().get_based_on_search(search_string)
+        if not search_string:
+            self.queryset = video_ops.get_all()
+        else:
+            self.queryset = video_ops.get_based_on_search(search_string)
+
         if not self.queryset:
             return Response(
                 data={'error': f'No videos found for [{search_string}]'},

@@ -12,3 +12,7 @@ class VideoModelOps:
          ).filter(
             search=search_str
         )
+
+    @staticmethod
+    def get_all():
+        return Video.objects.all()

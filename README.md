@@ -23,12 +23,16 @@ Allows users to search API from youtube directly.
 - Each page of API response is operated on different tasks.
 - Each list of videos (for single page) is then multi-threaded to store into database.
 - Four API Keys are used to rotate on basis of quota.
+- Text enriched search API implemented using PostgreSQL DB engine.
 
 #### Use:
 
-- Hit this API endpoint: `<BASE_UR>L/videos/v1?search=<your search string>` (no authorization)
+- Get all videos: `<BASE_UR>L/videos/v1` (no authorization)
+- Search videos: `<BASE_UR>L/videos/v1?search=<your search string>` (no authorization)
 
 ### PS:
 
 - No environment files used. Please directly change in `settings.py` & `docker-compose.yml`
 - Threads and Django workers are independent. Will not create latency issues.
+- In case all tokens are not working, please use your tokens.
+- Django logging used in case of debugging.
