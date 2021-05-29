@@ -149,8 +149,8 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
 
 CELERY_BEAT_SCHEDULE = {
-    "sample_task": {
-        "task": "core.tasks.sample_task",
+    "fetch_youtube_videos": {
+        "task": "videos.tasks.fetch_youtube_videos",
         "schedule": crontab(minute=f"*/{TASK_FREQUENCY}"),
     },
 }
