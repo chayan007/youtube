@@ -4,6 +4,14 @@
 
 Allows users to search API from youtube directly.
 
+### Stack used:
+
+- Django Rest Framework
+- PostgreSQL
+- Celery
+- Redis
+- Docker
+
 #### Setup:
 
 - Clone the repository
@@ -18,4 +26,9 @@ Allows users to search API from youtube directly.
 
 #### Use:
 
-- Hit this API endpoint: `BASE_URL/videos/v1?search=<your search string>` (no authorization)
+- Hit this API endpoint: `<BASE_UR>L/videos/v1?search=<your search string>` (no authorization)
+
+### PS:
+
+- No environment files used. Please directly change in `settings.py` & `docker-compose.yml`
+- Threads and Django workers are independent. Will not create latency issues.
