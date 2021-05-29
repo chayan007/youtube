@@ -11,6 +11,8 @@ import celery
 class YoutubeService:
 
     def fetch(self):
+        logging.debug(f"{self.__class__.__name__}    : Initiated Video fetching flow.")
+
         os.environ["OAUTHLIB_INSECURE_TRANSPORT"] = "1"
 
         api_service_name = "youtube"
@@ -45,22 +47,22 @@ class YoutubeService:
                 )
                 response = request.execute()
 
-                logging.info(f"{self.__class__.__name__}    : Pushing response into task queue.")
+                logging.debug(f"{self.__class__.__name__}    : Pushing response into task queue.")
                 celery.current_app.send_task('tasks.store_youtube_videos', (response.get('items'),))
 
                 next_page_token = response.get('nextPageToken')
                 if not next_page_token:
-                    logging.info(f"{self.__class__.__name__}    : No more pages to continue flow.")
+                    logging.debug(f"{self.__class__.__name__}    : No more pages to continue flow.")
                     continue
 
             except BaseException as e:
-                logging.info(f"{self.__class__.__name__}    : Current API Token Exhausted..")
+                logging.debug(f"{self.__class__.__name__}    : Current API Token Exhausted..")
                 current_yt_api_key_index += 1
 
                 if current_yt_api_key_index < num_of_yt_api_keys:
-                    logging.info(f"{self.__class__.__name__}    : Using Token No. [{current_yt_api_key_index}]")
+                    logging.debug(f"{self.__class__.__name__}    : Using Token No. [{current_yt_api_key_index}]")
                     yt_api_key = settings.YOUTUBE_API_KEYS[current_yt_api_key_index]
                     continue
 
-                logging.info(f"{self.__class__.__name__}    : No more API Token to continue flow.")
+                logging.debug(f"{self.__class__.__name__}    : No more API Token to continue flow.")
                 return

@@ -148,13 +148,6 @@ CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TIMEZONE = 'Asia/Kolkata'
 
-CELERY_BEAT_SCHEDULE = {
-    "fetch_youtube_videos": {
-        "task": "videos.tasks.fetch_youtube_videos",
-        "schedule": crontab(minute=f"*/{TASK_FREQUENCY}"),
-    },
-}
-
 YOUTUBE_API_KEYS = [
     'AIzaSyAxVcewL4lyPVdtStLK0uWOwJY9sA-dO5c',
     'AIzaSyD5O-khltsQiCsEfuABj9MwAC0iG0W4_-g',
