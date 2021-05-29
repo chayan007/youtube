@@ -5,6 +5,12 @@ services:
     image: postgres:9.6.5
     volumes:
       - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=youtube
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=youtube
+    ports:
+      - 5432:5432
   redis:
     image: "redis:alpine"
   web:
@@ -17,6 +23,13 @@ services:
     depends_on:
       - db
       - redis
+    environment:
+      - POSTGRES_USER=youtube
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=youtube
+      - POSTGRES_HOST=db
+      - POSTGRES_PORT=5432
+      - POSTGRES_ENGINE=django.db.backends.postgresql_psycopg2
   celery:
     build: .
     command: celery -A youtube worker -l info
